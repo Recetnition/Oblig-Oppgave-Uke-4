@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ObligOppgave</title>
+   <link id="pagestyle" rel="stylesheet" href="obligdark.css"/>
+   <script src="controller.js"></script>
+</head>
+<body>
+    <div class="header">
+        <h3>Obligatorisk Oppgave Uke 4</h3> 
+        <h4>Tipp-tallet-spillet</h4></div>
+    <nav>
+        <!-- <button id="stylesheet1" onclick="initate();"> Light Theme</button>
+             <button id="stylesheet2" onclick="initate();"> Dark Theme</button> -->
+       
+    </nav>
+    <div id="app"> </div>
+    
+    <footer>Daniel Antonsen Obligatorisk Oppgave 1</footer>
+   
+        <script>
+        // model
+        let guessNumber;
+        let secretNumber;
+        let counter = 0;
+        let pointsPerClick = 1;
+        
+
+       
+      
+    
+        // view
+        function updateView() {
+            const guessText = (guessNumber == null || isNaN(guessNumber)) ? '' : `Du tippet ${guessNumber}.<br>`;
+            
+         
+            let isCorrectOrNotText = 
+                (guessNumber == null || isNaN(guessNumber)) ? 'Skriv inn tallet du vil tippe i feltet under og trykk på knappen "Tipp"<br>' : 
+                guessNumber == secretNumber ? '<b>Du har tippet Riktig!</b>' : 
+                guessNumber < secretNumber ? 'Du har tippet for lavt.' :
+                guessNumber > secretNumber ? 'Du har tippet for høyt.' :
+                'Du må bruke tall ikke bokstaver eller tegn.';
+            
+
+            // let isCorrectOrNotText;
+            // if(guessNumber == null || isNaN(guessedNumber)) {
+            //     isCorrectOrNotText = 'Skriv inn tallet du vil tippe i feltet under og trykk på knappen "Tipp"<br>';
+            // } else if (guessNumber == secretNumber) {
+            //     isCorrectOrNotText = '<b>Du har tippet Riktig!</b>';
+            // } else if (guessNumber < secretNumber) {
+            //     isCorrectOrNotText = 'Du har tippet for lavt.';
+            // } else {
+            //     isCorrectOrNotText = 'Du har tippet for høyt.';
+            // } 
+            
+
+            document.getElementById('app').innerHTML = `
+                
+                
+               
+                
+                ${guessText} 
+                ${isCorrectOrNotText}  <br>
+                
+                
+                <input 
+                    type="text" 
+                    oninput="guessNumber = parseInt(this.value)" 
+                />
+                <button onclick="guess(); incrementCounter();">Tipp</button>
+                
+
+                <button onclick="startGame()">Start på nytt</button>
+                <div id="clicksInfo">Du har tippet ${counter}  ganger.</div>
+
+                
+                
+            `;
+            
+        }
+
+        //controller
+         startGame();
+     
+       
+
+    </script>
+</body>
+</html>

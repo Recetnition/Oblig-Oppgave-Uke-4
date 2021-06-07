@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>Test Suite</title>
+<link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-2.15.0.css">
+<body>
+  <div id="qunit"></div>
+  <div id="qunit-fixture"></div>
+  <script src="https://code.jquery.com/qunit/qunit-2.15.0.js"></script>
+  <script src="controller.js"></script>
+  <script>
+        // Dummy model
+        let counter;
+        let pointsPerClick = 1;
+        let secretNumber;
+        // Dummy View
+        function updateView() {
+
+        }
+
+        QUnit.test("Test 1 - Counter", function (assert) {
+            counter = 2;
+            incrementCounter();
+            let actual = counter;
+            let expected = 3;
+            assert.equal(actual, expected);
+        });
+      
+        QUnit.test("Test 2 - Er secretNumber et tall", function (assert) {
+            startGame();
+            
+            let actual = isNaN(secretNumber);
+            let expected = false;
+            assert.equal(actual, expected);
+        });
+      
+        QUnit.test("Test 3 - Er secretNumber større enn 1000", function (assert) {
+            startGame();
+            checkNumber();
+            
+            let actual = checkNumber();
+            let expected = true;
+            assert.equal(actual, expected);
+        });
+      
+    
+  </script>
+</body>
+</html>
